@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default class Home extends Component {
     constructor(props) {
@@ -26,10 +27,11 @@ export default class Home extends Component {
         return (
             <div>
 
-                {this.state.farmers.map((fr) => (
-                    <p key={fr.id}>{fr.name}</p>
-                ))
-                }
+            <div class="d-grid gap-2">  
+           <button class="btn btn-primary" type="button"> <a href="farmerlogin">FARMER</a></button>
+            <button class="btn btn-primary" type="button"><Link to="FarmerviewItems">BUYER</Link></button>
+            </div>
+
             </div>
         );
     }
