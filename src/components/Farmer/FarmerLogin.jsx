@@ -5,6 +5,8 @@ import axios from 'axios';
 
 
 class Farmerlogin extends React.Component{
+    
+    
 
     constructor(props) {
         super(props);
@@ -17,6 +19,7 @@ class Farmerlogin extends React.Component{
         this.state = {
             farmerMobile:'',
             farmername:'',
+            farmers:[]
 
            
         }
@@ -30,27 +33,37 @@ class Farmerlogin extends React.Component{
         this.setState({farmername: e.target.value});
     }
 
-    loginFarmer(e) {
-        const logFarmer = {
-            logMobile: this.state.farmerMobile,
-            logname: this.state.farmername
-        }
+    loginFarmer(){
+        
+        var flag = 0;
+        this.state.farmers.forEach((fam)=>{
+            if(((this.state.farmername==fam.name)&&(this.state.farmerMobile==fam.mobile))){
+                flag = 1;
+            }
+        });
 
-        axios.post('http://localhost:',logFarmer)
+        if(flag==1){
+            alert("Login Successfull");
+            window.location = "/FarmerviewItems";
+        }
+        else
+            alert("Invalid Login");
+       
+    
+
+    }
+
+    componentDidMount() {
+
+        axios.get('http://localhost:8080/scad/webapi/farmers')
             .then((res) => {
-                if(res.data == 'Login Successfull') {
-                    
-                    window.location = '/#';
-                }
-                else {
-                    document.getElementById("famlog1").className = "form-control is-invalid";
-                    document.getElementById("famlog").innerHTML = res.data;
-                    document.getElementById("famlog").className = "invalid-feedback";
-                }
+                console.log(res.data)
+                this.setState({farmers:res.data});
+                
             }).catch((err) => {
                 alert(err.message);
             })
-        e.preventDefault();
+        
     }
 
     render() {
@@ -65,17 +78,15 @@ class Farmerlogin extends React.Component{
                                 <input type="text" 
                                     className="form-control" 
                                     placeholder="Your First Name....." 
-                                    id="famlog1"
                                     value={this.state.farmername} 
                                     onChange={this.setFarmerName}/>
-                                <div id="famlog"></div>
+                                <div></div>
                             </div><br/>
 
                             <div class="input-group form-group">
                                 <input type="number" 
                                     className="form-control"
                                     placeholder="Your Mobile Number...." 
-                                    id="famlog"
                                     value={this.state.farmerMobile} 
                                     onChange={this.setFarmerMobile}
                                     aria-label="712345678 *" 
