@@ -1,40 +1,6 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router'
-import { Link, useParams, useHistory } from "react-router-dom";
 
 import axios from 'axios';
-
-const BItems = props => {
-
-    // const { id } = useParams()
-    // const url = '/upfamitem/'
-
-    // const data=[props]
-    
-
-return(
-<tr>
-            <td scope="col">{props.bitem.fId}</td>
-            <td scope="col">{props.bitem.name}</td>
-                <td scope="col">{props.bitem.price}</td>
-                
-
-    <td scope="col" >
-
-    
-    {/* {data.map((upfarmer) => (
-            <Link to={url+props.item.id}>
-                
-     <button type="button" className="btn btn-primary" style={{marginRight:"20px"}}
-    >ADD</button></Link>
-    ))} */}
-
-      
-    </td>
-</tr>
-);
-};
-
 
 class Displaylist extends React.Component{
 
@@ -42,8 +8,13 @@ class Displaylist extends React.Component{
         super(props);
         this.state = {
             BItems:[],
-            searchInput:''
+            searchInput:'',
+            itmNames:[],
+            itmQty:[]
         };
+        this.ItemList = this.ItemList.bind(this);
+        this.addItem = this.addItem.bind(this);
+        this.addToCart = this.addToCart.bind(this);
     }
 
     componentDidMount() {
@@ -59,32 +30,29 @@ class Displaylist extends React.Component{
     }
 
     ItemList() {
-        return  this.state.BItems.map(currentsupplier => {
-            if(this.state.searchInput == '') {
-                return <BItems bitem = {currentsupplier}/>;
-            }
-            else {
-                if(currentsupplier.name == this.state.searchInput){
-                    return <BItems bitem = {currentsupplier}/>;
-                }
-            }
+        this.state.BItems.map((itm) => {
+            if(itm.name == this.state.searchInput){
 
+            }
         })
+    }
 
-        // this.state.BItems.map((itm)=> {
-        //     if(itm.name == this.state.searchInput){
-        //         alert("sfef")
-        //     }
-        // })
+    addItem(itmName) {
+        // alert(itmName)
+        // alert(document.getElementById(itmName).value)
+        this.state.itmQty.push(document.getElementById(itmName).value);
+        this.state.itmNames.push(itmName);
     }
     
+    addToCart() {
+
+    }
 
     render(){
         return(
             <div>
                 <h1>View Items</h1><br/><br/>
 
-                
                 <div className="input-group" style={{marginLeft:"950px"}}>
                 <input type="search"  placeholder="Search" aria-label="Search"
                     aria-describedby="search-addon" value={this.state.searchInput} onChange={(e) => {this.setState({searchInput:e.target.value})}}/>
@@ -101,17 +69,32 @@ class Displaylist extends React.Component{
                      <th scope="col">Farmer ID</th>   
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Add</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {this.ItemList() }
+                    {
+                        this.state.BItems.map((itm) => (
+                            <tr>
+                                <td>{itm.fId}</td>
+                                <td>{itm.name}</td>
+                                <td>{itm.price}</td>
+                                <td><input type={"text"} id={itm.name}/></td>
+                                <td><button onClick={()=>{this.addItem(itm.name)}}>Add</button></td>
+                            </tr>
+                        ))
+                    }
                 </tbody>
             </table>
             </div>
+                <button onClick={this.addToCart}>ADD TO CART</button>
             </div>
         );
         
     }
+
+
 }
 
 export default Displaylist;
