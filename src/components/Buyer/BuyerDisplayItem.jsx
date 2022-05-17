@@ -4,8 +4,6 @@ import { Link, useParams, useHistory } from "react-router-dom";
 
 import axios from 'axios';
 
-
-
 const BItems = props => {
 
     // const { id } = useParams()
@@ -42,7 +40,10 @@ class Displaylist extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = {BItems:[]};
+        this.state = {
+            BItems:[],
+            searchInput:''
+        };
     }
 
     componentDidMount() {
@@ -58,11 +59,23 @@ class Displaylist extends React.Component{
     }
 
     ItemList() {
-        /*let listsearch = this.state.BItems.map(currentsupplier => {
-            return <BItems bitem = {currentsupplier}/>;
-        })*/
+        return  this.state.BItems.map(currentsupplier => {
+            if(this.state.searchInput == '') {
+                return <BItems bitem = {currentsupplier}/>;
+            }
+            else {
+                if(currentsupplier.name == this.state.searchInput){
+                    return <BItems bitem = {currentsupplier}/>;
+                }
+            }
 
-        //this.state.BItems.map((itm)=> )
+        })
+
+        // this.state.BItems.map((itm)=> {
+        //     if(itm.name == this.state.searchInput){
+        //         alert("sfef")
+        //     }
+        // })
     }
     
 
@@ -74,7 +87,7 @@ class Displaylist extends React.Component{
                 
                 <div className="input-group" style={{marginLeft:"950px"}}>
                 <input type="search"  placeholder="Search" aria-label="Search"
-                    aria-describedby="search-addon" />
+                    aria-describedby="search-addon" value={this.state.searchInput} onChange={(e) => {this.setState({searchInput:e.target.value})}}/>
                 <button type="button" className="btn btn-outline-primary" onClick={this.ItemList}>search</button>
 
                 </div>
