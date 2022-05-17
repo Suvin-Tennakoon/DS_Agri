@@ -26,12 +26,15 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-
-            <div class="d-grid gap-2">  
-           <button class="btn btn-primary" type="button"> <a href="farmerlogin">FARMER</a></button>
-            <button class="btn btn-primary" type="button"><Link to="FarmerviewItems">BUYER</Link></button>
+            <center><h1> e - Agri product online purchasing platform</h1></center>
+            <br/>
+            <h4> Select an option : </h4>
+            <div class="d-grid gap-3">  
+                <a href="farmerlogin" class="btn btn-success btn-rounded" role="button" aria-pressed="true">FARMER</a>
+                <a href="displayitem" class="btn btn-success btn-rounded" role="button" aria-pressed="true">BUYER</a>
             </div>
-
+                <br/><br/>
+                <img src="https://uploads-ssl.webflow.com/610ab869c288d010b689d8bd/617c03826f34d20582cd2a0e_graphic_LF%20precision%20farming%20ecosystem.png" class="img-fluid" alt="Wild Landscape" />
             </div>
         );
     }
