@@ -4,36 +4,27 @@ import { Link, useParams, useHistory } from "react-router-dom";
 
 import axios from 'axios';
 
-const BItems = props => {
+// const BItems = props => {
+//  const add=()=>{
+//     alert(this.state.BItems[0].name)
+//  } 
 
-    // const { id } = useParams()
-    // const url = '/upfamitem/'
-
-    // const data=[props]
-    
-
-return(
-<tr>
-            <td scope="col">{props.bitem.fId}</td>
-            <td scope="col">{props.bitem.name}</td>
-                <td scope="col">{props.bitem.price}</td>
+// return(
+// <tr>
+//             <td scope="col">{props.bitem.fId}</td>
+//             <td scope="col">{props.bitem.name}</td>
+//                 <td scope="col">{props.bitem.price}</td>
                 
 
-    <td scope="col" >
-
-    
-    {/* {data.map((upfarmer) => (
-            <Link to={url+props.item.id}>
-                
-     <button type="button" className="btn btn-primary" style={{marginRight:"20px"}}
-    >ADD</button></Link>
-    ))} */}
+//     <td scope="col" >
+//     <input type="number" style={{marginRight:"200px"}}></input>
+//     <button type="button" className="btn btn-primary" onclick={add()}>ADD</button>
 
       
-    </td>
-</tr>
-);
-};
+//     </td>
+// </tr>
+// );
+// };
 
 
 class Displaylist extends React.Component{
@@ -51,7 +42,7 @@ class Displaylist extends React.Component{
             .then(res => {
                 
                 console.log(res.data);
-                this.setState({FItems: res.data});
+                this.setState({BItems: res.data});
             })
             .catch((err)=>{
                 console.log(err);
@@ -105,7 +96,14 @@ class Displaylist extends React.Component{
                     </tr>
                 </thead>
                 <tbody>
-                    { }
+                    {this.state.BItems.map(props=>{
+                        <tr>
+                        <td scope="col">{props.bitem.fId}</td>
+                        <td scope="col">{props.bitem.name}</td>
+                        <td scope="col">{props.bitem.price}</td>
+                        
+                        </tr>
+                    })}
                 </tbody>
             </table>
             </div>

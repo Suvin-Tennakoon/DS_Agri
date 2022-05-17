@@ -14,19 +14,14 @@ import { useNavigate, useParams } from "react-router-dom";
             
             //console.log(id)
             
-            const[fId,setFarmerID] = useState()
+            
             const[name,setitemname] = useState()
             const[price,setitemprice] = useState()
        
-            
-
-
             useEffect(()=>{
                 let getitem = () =>{
                     axios.get('http://localhost:8080/scad/webapi/items/'+id)
                     .then((res) =>{
-                        
-                        setFarmerID(res.data.fId)
                         setitemname(res.data.name)
                         setitemprice(res.data.price)
                       
@@ -45,7 +40,7 @@ import { useNavigate, useParams } from "react-router-dom";
                 e.preventDefault()
 
                 const upitemlist = {
-                   fId,
+                   
                    name,
                    price
                 }
@@ -83,13 +78,6 @@ import { useNavigate, useParams } from "react-router-dom";
                         <div class="col-xl-6">
                           <div class="card-body p-md-5 text-black">
                             <h3 class="mb-5 text-uppercase">Update Item Details</h3>
-            
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="form3Example97">Farmer ID</label>
-                                <input type="number" id="form3Example97" class="form-control form-control-lg"
-                                defaultValue={fId}
-                                onChange={(e)=> {setFarmerID(e.target.value)}} />
-                            </div>
 
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="form3Example97">Item Name</label>
