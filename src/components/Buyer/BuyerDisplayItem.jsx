@@ -6,43 +6,12 @@ import axios from 'axios';
 
 
 
-const BItems = props => {
-
-    // const { id } = useParams()
-    // const url = '/upfamitem/'
-
-    // const data=[props]
-    
-
-return(
-<tr>
-            <td scope="col">{props.bitem.fId}</td>
-            <td scope="col">{props.bitem.name}</td>
-                <td scope="col">{props.bitem.price}</td>
-                
-
-    <td scope="col" >
-
-    
-    {/* {data.map((upfarmer) => (
-            <Link to={url+props.item.id}>
-                
-     <button type="button" className="btn btn-primary" style={{marginRight:"20px"}}
-    >ADD</button></Link>
-    ))} */}
-
-      
-    </td>
-</tr>
-);
-};
-
-
 class Displaylist extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = {BItems:[]};
+        this.state = {FItems:[]};
+        
     }
 
     componentDidMount() {
@@ -50,17 +19,11 @@ class Displaylist extends React.Component{
             .then(res => {
                 
                 console.log(res.data);
-                this.setState({BItems: res.data});
+                this.setState({FItems: res.data});
             })
             .catch((err)=>{
                 console.log(err);
             })
-    }
-
-    ItemList() {
-        return this.state.BItems.map(currentsupplier => {
-            return <BItems bitem = {currentsupplier}/>;
-        })
     }
     
 
@@ -74,10 +37,11 @@ class Displaylist extends React.Component{
                      <th scope="col">Farmer ID</th>   
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {this.ItemList() }
+                    { }
                 </tbody>
             </table>
             </div>

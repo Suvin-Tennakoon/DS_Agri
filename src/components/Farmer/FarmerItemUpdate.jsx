@@ -9,15 +9,14 @@ import { useNavigate, useParams } from "react-router-dom";
         function Updateitem (props){
 
             const{id} = useParams()
-            const history = useNavigate()
-            const url = '/FarmerviewItems'
+           
             
             
             //console.log(id)
             
-            const[UfId,setFarmerID] = useState()
-            const[Uname,setitemname] = useState()
-            const[Uprice,setitemprice] = useState()
+            const[fId,setFarmerID] = useState()
+            const[name,setitemname] = useState()
+            const[price,setitemprice] = useState()
        
             
 
@@ -34,7 +33,7 @@ import { useNavigate, useParams } from "react-router-dom";
                     })
                 }
 
-                getitem()
+             getitem()
             },[])
 
            
@@ -46,16 +45,16 @@ import { useNavigate, useParams } from "react-router-dom";
                 e.preventDefault()
 
                 const upitemlist = {
-                   UfId,
-                   Uname,
-                   Uprice
+                   fId,
+                   name,
+                   price
                 }
             
 
-                axios.put('http://localhost:3001/acceptsupplier/update/'+id,upitemlist)
+                axios.put('http://localhost:8080/scad/webapi/items/'+id,upitemlist)
                 .then(()=>{
                     alert('Item is updated successfully')
-                    history.push(url)
+                    window.location = '/FarmerviewItems'
                    
                 }).catch((err)=>{
                     console.log(err)
@@ -88,21 +87,21 @@ import { useNavigate, useParams } from "react-router-dom";
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="form3Example97">Farmer ID</label>
                                 <input type="number" id="form3Example97" class="form-control form-control-lg"
-                                defaultValue={UfId}
+                                defaultValue={fId}
                                 onChange={(e)=> {setFarmerID(e.target.value)}} />
                             </div>
 
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="form3Example97">Item Name</label>
                                 <input type="text" id="form3Example97" class="form-control form-control-lg"
-                                defaultValue={Uname}
+                                defaultValue={name}
                                 onChange={(e) => {setitemname(e.target.value)}} />
                             </div>
             
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="form3Example97">Price</label>
                                 <input type="text" id="form3Example97" class="form-control form-control-lg"
-                                defaultValue={Uprice}
+                                defaultValue={price}
                                 onChange={(e) => {setitemprice(e.target.value)}} />
                             </div>
             
