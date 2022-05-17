@@ -10,26 +10,26 @@ import { useNavigate, useParams } from "react-router-dom";
 
             const{id} = useParams()
             const history = useNavigate()
-            //const url = '/allsup'
+            const url = '/FarmerviewItems'
             
             
             //console.log(id)
             
-         
-            const[itemname,setitemname] = useState("")
-            const[itemprice,setitemprice] = useState("")
-            const[itemamount,setitemamount] = useState("")
+            const[UfId,setFarmerID] = useState()
+            const[Uname,setitemname] = useState()
+            const[Uprice,setitemprice] = useState()
+       
             
 
 
             useEffect(()=>{
                 let getitem = () =>{
-                    axios.get('http://localhost:'+id)
+                    axios.get('http://localhost:8080/scad/webapi/items/'+id)
                     .then((res) =>{
                         
-                        setitemname(res.data.itemname)
-                        setitemprice(res.data.itemprice)
-                        setitemamount(res.data.itemamount)
+                        setFarmerID(res.data.fId)
+                        setitemname(res.data.name)
+                        setitemprice(res.data.price)
                       
                     })
                 }
@@ -46,17 +46,16 @@ import { useNavigate, useParams } from "react-router-dom";
                 e.preventDefault()
 
                 const upitemlist = {
-                   
-                    itemname,
-                    itemprice,
-                    itemamount
+                   UfId,
+                   Uname,
+                   Uprice
                 }
             
 
                 axios.put('http://localhost:3001/acceptsupplier/update/'+id,upitemlist)
                 .then(()=>{
                     alert('Item is updated successfully')
-                    //history.push(url)
+                    history.push(url)
                    
                 }).catch((err)=>{
                     console.log(err)
@@ -87,24 +86,24 @@ import { useNavigate, useParams } from "react-router-dom";
                             <h3 class="mb-5 text-uppercase">Update Item Details</h3>
             
                             <div class="form-outline mb-4">
-                                <label class="form-label" for="form3Example97">Item Name</label>
-                                <input type="text" id="form3Example97" class="form-control form-control-lg"
-                                defaultValue={itemname}
-                                onChange={(e)=> {setitemname(e.target.value)}} />
+                                <label class="form-label" for="form3Example97">Farmer ID</label>
+                                <input type="number" id="form3Example97" class="form-control form-control-lg"
+                                defaultValue={UfId}
+                                onChange={(e)=> {setFarmerID(e.target.value)}} />
                             </div>
 
                             <div class="form-outline mb-4">
-                                <label class="form-label" for="form3Example97">Price</label>
+                                <label class="form-label" for="form3Example97">Item Name</label>
                                 <input type="text" id="form3Example97" class="form-control form-control-lg"
-                                defaultValue={itemprice}
-                                onChange={(e) => {setitemprice(e.target.value)}} />
+                                defaultValue={Uname}
+                                onChange={(e) => {setitemname(e.target.value)}} />
                             </div>
             
                             <div class="form-outline mb-4">
-                                <label class="form-label" for="form3Example97">Amount</label>
+                                <label class="form-label" for="form3Example97">Price</label>
                                 <input type="text" id="form3Example97" class="form-control form-control-lg"
-                                defaultValue={itemamount}
-                                onChange={(e) => {setitemamount(e.target.value)}} />
+                                defaultValue={Uprice}
+                                onChange={(e) => {setitemprice(e.target.value)}} />
                             </div>
             
                             <div class="d-flex justify-content-end pt-3">

@@ -5,6 +5,7 @@ import FamRegistration from "./components/Farmer/FarmerRegister";
 import Updateitem from "./components/Farmer/FarmerItemUpdate";
 import AddItems from "./components/Farmer/addItems";
 import Itemlist from "./components/Farmer/viewItems";
+import Displaylist from "./components/Buyer/BuyerDisplayItem";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/upfamitem/:id" element={<Updateitem/>}/>
             <Route path="/FarmeraddItems" element={<AddItems/>}/>
             <Route path="/FarmerviewItems" element={<Itemlist/>}/>
+            <Route path="/displayitem" element={<Displaylist/>}/>
         </Routes>
 
         </div>

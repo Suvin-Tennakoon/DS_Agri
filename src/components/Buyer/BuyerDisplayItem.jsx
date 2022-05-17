@@ -6,48 +6,30 @@ import axios from 'axios';
 
 
 
-const FItems = props => {
-    
-    function Delete(id){
-        var result = window.confirm('Confirm to delete this supplier')
-        if(result==true){
-        axios.delete('http://localhost:8080/scad/webapi/items/'+id)
-    .then(()=> {
-        alert('Item deleted successfully');
-    }).catch((err) => {
-        alert(err.message);
-    });
-}
-}
+const BItems = props => {
 
-    
-    const { id } = useParams()
-    const url = '/upfamitem/'
+    // const { id } = useParams()
+    // const url = '/upfamitem/'
 
-    const data=[props]
-    
+    // const data=[props]
     
 
 return(
 <tr>
-            <td scope="col">{props.item.fId}</td>
-            <td scope="col">{props.item.name}</td>
-                <td scope="col">{props.item.price}</td>
+            <td scope="col">{props.bitem.fId}</td>
+            <td scope="col">{props.bitem.name}</td>
+                <td scope="col">{props.bitem.price}</td>
                 
 
     <td scope="col" >
 
     
-    {data.map((upfarmer) => (
+    {/* {data.map((upfarmer) => (
             <Link to={url+props.item.id}>
                 
      <button type="button" className="btn btn-primary" style={{marginRight:"20px"}}
-    >Update</button></Link>
-    ))}
-
-        <button type="button" className="btn btn-primary" style={{backgroundColor:"gray"}} onClick={(e) => {
-         Delete(props.item.id);
-      }}>Delete</button>
+    >ADD</button></Link>
+    ))} */}
 
       
     </td>
@@ -56,11 +38,11 @@ return(
 };
 
 
-class Itemlist extends React.Component{
+class Displaylist extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = {FItems:[]};
+        this.state = {BItems:[]};
     }
 
     componentDidMount() {
@@ -68,7 +50,7 @@ class Itemlist extends React.Component{
             .then(res => {
                 
                 console.log(res.data);
-                this.setState({FItems: res.data});
+                this.setState({BItems: res.data});
             })
             .catch((err)=>{
                 console.log(err);
@@ -76,8 +58,8 @@ class Itemlist extends React.Component{
     }
 
     ItemList() {
-        return this.state.FItems.map(currentsupplier => {
-            return <FItems item = {currentsupplier}/>;
+        return this.state.BItems.map(currentsupplier => {
+            return <BItems bitem = {currentsupplier}/>;
         })
     }
     
@@ -98,11 +80,10 @@ class Itemlist extends React.Component{
                     {this.ItemList() }
                 </tbody>
             </table>
-            <button type="submit" class="btn btn-warning btn-lg ms-2"><a href="/FarmeraddItems">ADD ITEMS</a></button>
             </div>
         );
         
     }
 }
 
-export default Itemlist;
+export default Displaylist;
