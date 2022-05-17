@@ -54,7 +54,7 @@ class Farmerlogin extends React.Component {
 
         axios.get('http://localhost:8080/scad/webapi/farmers')
             .then((res) => {
-                
+                console.log(res.data);
                 this.setState({farmers: res.data});
 
             }).catch((err) => {
@@ -66,10 +66,12 @@ class Farmerlogin extends React.Component {
     render() {
         return (
             <div>
+                <fieldset>
                 <div className="container login-container">
                     <div className="row">
                         <div className="col-md-6 login-form-2">
                             <h3>Farmer Login Form</h3>
+                            <br/>
                             <form onSubmit={(e)=>{this.loginFarmer(e)}}>
                                 <div className="form-group">
                                     <input type="text"
@@ -103,13 +105,13 @@ class Farmerlogin extends React.Component {
                         </div>
                         <div className="col-md-6 login-form-1">
                             <img
-                                src='https://t4.ftcdn.net/jpg/03/85/07/15/360_F_385071585_SZ8fM8Q6GxUx9CiJBMTUS7EIpIhcM4xe.jpg'
+                                src='https://media.istockphoto.com/vectors/smart-agriculture-and-iot-vector-id1192242206?k=20&m=1192242206&s=612x612&w=0&h=J29IUq7EqTHB55u7c9KwwENZlSQG6zZma7UHxuHT2rY='
                                 width="400px"/>
                         </div>
                     </div>
                 </div>
                 <br/><br/><br/>
-
+                </fieldset>
             </div>
 
         );
