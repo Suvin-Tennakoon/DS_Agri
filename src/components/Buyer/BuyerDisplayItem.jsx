@@ -58,16 +58,30 @@ class Displaylist extends React.Component{
     }
 
     ItemList() {
-        return this.state.BItems.map(currentsupplier => {
+        /*let listsearch = this.state.BItems.map(currentsupplier => {
             return <BItems bitem = {currentsupplier}/>;
-        })
+        })*/
+
+        //this.state.BItems.map((itm)=> )
     }
     
 
     render(){
         return(
+            <div>
+                <h1>View Items</h1><br/><br/>
+
+                
+                <div className="input-group" style={{marginLeft:"950px"}}>
+                <input type="search"  placeholder="Search" aria-label="Search"
+                    aria-describedby="search-addon" />
+                <button type="button" className="btn btn-outline-primary" onClick={this.ItemList}>search</button>
+
+                </div>
+                <br/>
+
             <div class="table-responsive">
-            <h1>View Items</h1><br/><br/>
+            
             <table class="table table-striped table-hover table table-sm">
                 <thead>
                     <tr>
@@ -80,6 +94,7 @@ class Displaylist extends React.Component{
                     {this.ItemList() }
                 </tbody>
             </table>
+            </div>
             </div>
         );
         
