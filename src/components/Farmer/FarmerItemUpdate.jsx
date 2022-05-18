@@ -9,32 +9,26 @@ import { useNavigate, useParams } from "react-router-dom";
         function Updateitem (props){
 
             const{id} = useParams()
-            const history = useNavigate()
-            const url = '/FarmerviewItems'
+           
             
             
             //console.log(id)
             
-            const[UfId,setFarmerID] = useState()
-            const[Uname,setitemname] = useState()
-            const[Uprice,setitemprice] = useState()
-       
             
-
-
+            const[name,setitemname] = useState()
+            const[price,setitemprice] = useState()
+       
             useEffect(()=>{
                 let getitem = () =>{
                     axios.get('http://localhost:8080/scad/webapi/items/'+id)
                     .then((res) =>{
-                        
-                        setFarmerID(res.data.fId)
                         setitemname(res.data.name)
                         setitemprice(res.data.price)
                       
                     })
                 }
 
-                getitem()
+             getitem()
             },[])
 
            
@@ -46,16 +40,16 @@ import { useNavigate, useParams } from "react-router-dom";
                 e.preventDefault()
 
                 const upitemlist = {
-                   UfId,
-                   Uname,
-                   Uprice
+                   
+                   name,
+                   price
                 }
             
 
-                axios.put('http://localhost:3001/acceptsupplier/update/'+id,upitemlist)
+                axios.put('http://localhost:8080/scad/webapi/items/'+id,upitemlist)
                 .then(()=>{
                     alert('Item is updated successfully')
-                    history.push(url)
+                    window.location = '/FarmerviewItems'
                    
                 }).catch((err)=>{
                     console.log(err)
@@ -84,25 +78,18 @@ import { useNavigate, useParams } from "react-router-dom";
                         <div class="col-xl-6">
                           <div class="card-body p-md-5 text-black">
                             <h3 class="mb-5 text-uppercase">Update Item Details</h3>
-            
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="form3Example97">Farmer ID</label>
-                                <input type="number" id="form3Example97" class="form-control form-control-lg"
-                                defaultValue={UfId}
-                                onChange={(e)=> {setFarmerID(e.target.value)}} />
-                            </div>
 
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="form3Example97">Item Name</label>
                                 <input type="text" id="form3Example97" class="form-control form-control-lg"
-                                defaultValue={Uname}
+                                defaultValue={name}
                                 onChange={(e) => {setitemname(e.target.value)}} />
                             </div>
             
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="form3Example97">Price</label>
                                 <input type="text" id="form3Example97" class="form-control form-control-lg"
-                                defaultValue={Uprice}
+                                defaultValue={price}
                                 onChange={(e) => {setitemprice(e.target.value)}} />
                             </div>
             
