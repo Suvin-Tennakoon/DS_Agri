@@ -68,6 +68,7 @@ class Displaylist extends React.Component{
         return(
             <div class="table-responsive">
             <h1>View Items</h1><br/><br/>
+            <a href="paymentMethod" className="btn btn-success btn-rounded" role="button" aria-pressed="true">Payment</a>
             <table class="table table-striped table-hover table table-sm">
                 <thead>
                     <tr>
