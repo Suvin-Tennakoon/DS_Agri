@@ -6,6 +6,9 @@ import Updateitem from "./components/Farmer/FarmerItemUpdate";
 import AddItems from "./components/Farmer/addItems";
 import Itemlist from "./components/Farmer/viewItems";
 import Displaylist from "./components/Buyer/BuyerDisplayItem";
+import PaymentSelection  from "./components/Buyer/PaymentMethod";
+import MobileBill from "./components/Buyer/BillPayment";
+import CardBill from "./components/Buyer/CardPayment";
 
 
 function App() {
@@ -21,6 +24,9 @@ function App() {
             <Route path="/FarmeraddItems" element={<AddItems/>}/>
             <Route path="/FarmerviewItems" element={<Itemlist/>}/>
             <Route path="/displayitem" element={<Displaylist/>}/>
+            <Route path="/paymentMethod" element={<PaymentSelection />}/>
+            <Route path="/paymenMobileBill" element={<MobileBill/>}/>
+            <Route path="/paymentCardBill" element={<CardBill/>}/>
         </Routes>
 
         </div>
