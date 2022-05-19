@@ -9,7 +9,7 @@ class Displaylist extends React.Component{
         this.state = {
             BItems:[],
             searchInput:'',
-            itmNames:[],
+            itmNames:[""],
             itmQty:[]
         };
         this.ItemList = this.ItemList.bind(this);
@@ -45,6 +45,22 @@ class Displaylist extends React.Component{
     }
     
     addToCart() {
+    
+        const itemdata = {
+            qty: [1,2,3,4] ,
+            items: ["ty","uio","rtyub","po"]
+      
+            }
+
+            console.log(itemdata);
+
+        axios.post('http://localhost:8080/scad/webapi/carts',itemdata)
+        .then(()=> {
+            alert('Added to the cart');
+        }).catch((err) => {
+            alert(err.message);
+        });
+        
 
     }
 
