@@ -22,8 +22,8 @@ import { useNavigate, useParams } from "react-router-dom";
                 let getitem = () =>{
                     axios.get('http://localhost:8080/scad/webapi/items/'+id)
                     .then((res) =>{
-                        setitemname(res.data.name)
-                        setitemprice(res.data.price)
+                        setitemname(res.data.id.name)
+                        setitemprice(res.data.id.price)
                       
                     })
                 }

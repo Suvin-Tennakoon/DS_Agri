@@ -13,8 +13,8 @@ class MobileBill extends React.Component{
 
         this.state = {
             phoneNo:'',
-            pin: '',
-            billamount: '',
+            pin: 0,
+            billamount:0,
            
 
         }
@@ -49,9 +49,10 @@ class MobileBill extends React.Component{
         //3 parameters: url of bkend api, data to send and configurations(optional)
      
     
-            axios.post('http://localhost:8080/scad/webapi/items', MobileBilling)
+            axios.put('http://localhost:8080/scad/thirdpt/mobilepayment', MobileBilling)
             .then(()=> {
                 alert('Payment Data Successfuly Inserted');
+                window.location = '/dilivery'
             }).catch((err) => {
                 alert(err.message);
             });
@@ -123,7 +124,7 @@ class MobileBill extends React.Component{
                         </div>
                     </div>
                     </div>
-                </section>   
+                </section><br/><br/>   
             </div>
 
 

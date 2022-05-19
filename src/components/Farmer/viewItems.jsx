@@ -98,7 +98,7 @@ class Itemlist extends React.Component{
                     {this.ItemList() }
                 </tbody>
             </table>
-            <button type="submit" class="btn btn-warning btn-lg ms-2"><a href="/FarmeraddItems">ADD ITEMS</a></button>
+                <a href="/FarmeraddItems" type="submit" class="btn btn-warning btn-lg ms-2"  role="button" aria-pressed="true">ADD ITEMS</a>
             </div>
         );
         

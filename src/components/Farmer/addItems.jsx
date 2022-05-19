@@ -60,6 +60,7 @@ class AddItems extends React.Component{
             axios.post('http://localhost:8080/scad/webapi/items', Farmer)
             .then(()=> {
                 alert('Farmer Iteams Data Successfuly Inserted');
+                window.location = '/FarmerviewItems'
             }).catch((err) => {
                 alert(err.message);
             });

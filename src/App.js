@@ -9,6 +9,7 @@ import Displaylist from "./components/Buyer/BuyerDisplayItem";
 import PaymentSelection  from "./components/Buyer/PaymentMethod";
 import MobileBill from "./components/Buyer/BillPayment";
 import CardBill from "./components/Buyer/CardPayment";
+import Dilivey from "./components/Buyer/DiliveryItem";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/paymentMethod" element={<PaymentSelection />}/>
             <Route path="/paymenMobileBill" element={<MobileBill/>}/>
             <Route path="/paymentCardBill" element={<CardBill/>}/>
+            <Route path="/dilivery" element={<Dilivey/>}/>
         </Routes>
 
         </div>

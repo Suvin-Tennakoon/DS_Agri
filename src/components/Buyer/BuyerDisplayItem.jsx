@@ -57,6 +57,7 @@ class Displaylist extends React.Component{
         axios.post('http://localhost:8080/scad/webapi/carts',itemdata)
         .then(()=> {
             alert('Added to the cart');
+            window.location ='/paymentMethod'
         }).catch((err) => {
             alert(err.message);
         });

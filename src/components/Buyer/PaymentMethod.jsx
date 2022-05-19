@@ -15,8 +15,10 @@ class  PaymentSelection extends React.Component{
     
         <div>
             <h1> Select your Payment Method </h1>
-            <a href="paymenMobileBill" className="btn btn-success btn-rounded" role="button" aria-pressed="true">BillPayment</a><br/><br/>
-            <a href="paymentCardBill" className="btn btn-success btn-rounded" role="button" aria-pressed="true">CardPayment</a>
+            <div className="d-grid gap-3">  
+                <a href="/paymenMobileBill" className="btn btn-success btn-rounded" role="button" aria-pressed="true">Bill Payment</a>
+                <a href="/paymentCardBill" className="btn btn-success btn-rounded" role="button" aria-pressed="true">Card Payment</a>
+            </div>
             
             {/* <div>
                 <form name ="f">

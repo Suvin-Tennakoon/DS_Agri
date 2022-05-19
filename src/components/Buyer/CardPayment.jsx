@@ -20,8 +20,7 @@ class  CardBill extends React.Component{
             cardno:0,
             cardholder: '',
             cvc: '',
-            camount:'',
-           
+            camount:0,
 
         }
     }
@@ -56,9 +55,10 @@ class  CardBill extends React.Component{
         //3 parameters: url of bkend api, data to send and configurations(optional)
      
     
-            axios.post('#', CardPaymnetBilling)
+            axios.post('http://localhost:8080/scad/thirdpt/paymentgateway', CardPaymnetBilling)
             .then(()=> {
-                alert('Farmer Payment Data Successfuly Inserted');
+                alert('Payment Data Successfuly Inserted');
+                window.location = '/dilivery'
             }).catch((err) => {
                 alert(err.message);
             });
@@ -69,9 +69,7 @@ class  CardBill extends React.Component{
         //window.location = '/';
     }
 
-    
-
-    render(){
+  render(){
         return(
             <div>
                 <section className="vh-50" style={{backgroundcolor:"#eee"}}>
@@ -138,8 +136,9 @@ class  CardBill extends React.Component{
                         </div>
                     </div>
                     </div>
-                </section>   
-            </div>
+                </section> <br/><br/>
+
+        </div>
 
 
         );
