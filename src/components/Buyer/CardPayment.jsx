@@ -55,7 +55,7 @@ class  CardBill extends React.Component{
         //3 parameters: url of bkend api, data to send and configurations(optional)
      
     
-            axios.post('http://localhost:8080/scad/thirdpt/paymentgateway', CardPaymnetBilling)
+            axios.post('http://127.0.0.1:8280/scad/thirdpt/paymentgateway', CardPaymnetBilling)
             .then(()=> {
                 alert('Payment Data Successfuly Inserted');
                 window.location = '/dilivery'

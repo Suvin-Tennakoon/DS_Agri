@@ -18,7 +18,7 @@ class Displaylist extends React.Component{
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/scad/webapi/items')
+        axios.get('http://127.0.0.1:8280/scad/webapi/items')
             .then(res => {
                 
                 console.log(res.data);
@@ -54,7 +54,7 @@ class Displaylist extends React.Component{
 
             console.log(itemdata);
 
-        axios.post('http://localhost:8080/scad/webapi/carts',itemdata)
+        axios.post('http://127.0.0.1:8280/scad/webapi/carts',itemdata)
         .then(()=> {
             alert('Added to the cart');
             window.location ='/paymentMethod'

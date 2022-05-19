@@ -57,7 +57,7 @@ class AddItems extends React.Component{
         //3 parameters: url of bkend api, data to send and configurations(optional)
      
     
-            axios.post('http://localhost:8080/scad/webapi/items', Farmer)
+            axios.post('http://127.0.0.1:8280/scad/webapi/items', Farmer)
             .then(()=> {
                 alert('Farmer Iteams Data Successfuly Inserted');
                 window.location = '/FarmerviewItems'

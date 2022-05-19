@@ -43,7 +43,7 @@ class FamRegistration extends React.Component{
 
         
 
-        axios.post('http://localhost:8080/scad/webapi/farmers', Farmerdata)
+        axios.post('http://127.0.0.1:8280/scad/webapi/farmers', Farmerdata)
         .then(()=> {
             alert('Data are Successfuly Inserted ');
         }).catch((err) => {

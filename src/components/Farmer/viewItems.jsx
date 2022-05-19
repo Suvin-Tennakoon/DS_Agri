@@ -64,7 +64,7 @@ class Itemlist extends React.Component{
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/scad/webapi/items')
+        axios.get('http://127.0.0.1:8280/scad/webapi/items')
             .then(res => {
                 
                 console.log(res.data);

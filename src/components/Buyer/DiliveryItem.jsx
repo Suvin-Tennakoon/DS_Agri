@@ -32,7 +32,7 @@ class Dilivey extends React.Component{
         }
 
         else{
-            axios.get('http://localhost:8080/scad/thirdpt/delivery?Address='+this.state.address)
+            axios.get('http://127.0.0.1:8280/scad/thirdpt/delivery?Address='+this.state.address)
             .then(()=> {
 
                 alert('Deliver In Progress. Thank you');

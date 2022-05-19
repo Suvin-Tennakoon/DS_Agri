@@ -52,7 +52,7 @@ class Farmerlogin extends React.Component {
 
     componentDidMount() {
 
-        axios.get('http://localhost:8080/scad/webapi/farmers')
+        axios.get('http://127.0.0.1:8280/scad/webapi/farmers')
             .then((res) => {
                 console.log(res.data);
                 this.setState({farmers: res.data});
