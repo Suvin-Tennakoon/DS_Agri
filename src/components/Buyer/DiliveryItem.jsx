@@ -28,6 +28,7 @@ class Dilivey extends React.Component{
 
         if(this.state.address==""){
             alert("Item is Not Delivered");
+            window.location = '/'
         }
 
         else{
