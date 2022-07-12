@@ -17,10 +17,10 @@ class  CardBill extends React.Component{
         this.savecardData = this.savecardData.bind(this);
 
         this.state = {
-            cardno:0,
+            cardno:'',
             cardholder: '',
-            cvc: '',
-            camount:0,
+            cvc: 0,
+            camount:2500,
 
         }
     }
@@ -45,10 +45,10 @@ class  CardBill extends React.Component{
 
        
         const CardPaymnetBilling = {
-            fId : this.state.id,
-            name: this.state.item, 
-            price: this.state.price,
-            price: this.state.price,
+            cardNo : this.state.cardno,
+            cardHolder: this.state.item,
+            amount: this.state.camount,
+            cvc:this.state.cvc
         }
 
         //send data to backend
@@ -56,9 +56,11 @@ class  CardBill extends React.Component{
      
     
             axios.post('http://127.0.0.1:8280/scad/thirdpt/paymentgateway', CardPaymnetBilling)
-            .then(()=> {
-                alert('Payment Data Successfuly Inserted');
-                window.location = '/dilivery'
+            .then((res)=> {
+                alert(res.data);
+
+                if(res.data == 'Payment Successfull !!!')
+                    window.location = '/dilivery';
             }).catch((err) => {
                 alert(err.message);
             });
@@ -139,12 +141,7 @@ class  CardBill extends React.Component{
                 </section> <br/><br/>
 
         </div>
-
-
         );
-    
-
-
     }   
 }
 

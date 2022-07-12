@@ -7,7 +7,7 @@ class Dilivey extends React.Component{
         super(props);
 
         /*
-        *setItemName() is a user ddefined function. React doesn't know about it.
+        *setItemName() is a user defined function. React doesn't know about it.
         *so we need to bind that with library
         */
        this.setaddress = this.setaddress.bind(this);
@@ -27,14 +27,13 @@ class Dilivey extends React.Component{
     DiliverItems(e) {
 
         if(this.state.address==""){
-            alert("Item is Not Delivered");
+            alert("Item will not be Delivered");
             window.location = '/'
         }
 
         else{
-            axios.get('http://127.0.0.1:8280/scad/thirdpt/delivery?Address='+this.state.address)
+            axios.get('http://localhost:8080/scad/thirdpt/delivery?Address='+this.state.address)
             .then(()=> {
-
                 alert('Deliver In Progress. Thank you');
                 window.location = '/'
             }).catch((err) => {
